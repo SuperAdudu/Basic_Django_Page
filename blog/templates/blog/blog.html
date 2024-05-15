@@ -1,0 +1,16 @@
+{% extends 'pages/base.html' %}
+
+{% block title  %}Blog{% endblock  %}
+{% block content %}
+<h4>Tất cả các bài viết</h4>
+<br>
+{% for post in Posts %}
+    <h5><a href= "{% url 'post' post.id %}">{{post.title}}</a></h5>
+    <img src= "{{post.image.url}}" width="500px" height="300px"/>
+    <br>
+{% endfor %}
+<br>
+{% if page_obj.has_next %}
+    <a href="{{request.path}}?page={{page_obj.next_page_number}}">Trang tiếp</a>
+{% endif%}
+{% endblock %}
